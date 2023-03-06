@@ -32,7 +32,7 @@ public class DataBaseConfig {
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(getDataSource());
-        em.setPackagesToScan("web");
+        em.setPackagesToScan(env.getRequiredProperty("db.web.package"));
         em.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         em.setJpaProperties(getHibernateProperties());
         return em;
@@ -64,14 +64,14 @@ public class DataBaseConfig {
         dataSource.setUrl(env.getProperty("db.url"));
         dataSource.setUsername(env.getProperty("db.username"));
         dataSource.setPassword(env.getProperty("db.password"));
-//
-//        dataSource.setInitialSize(Integer.valueOf(env.getRequiredProperty("db.initialSize")));
-//        dataSource.setMinIdle(Integer.valueOf(env.getRequiredProperty("db.minIdle")));
-//        dataSource.setMaxIdle(Integer.valueOf(env.getRequiredProperty("db.maxIdle")));
-//        dataSource.setTimeBetweenEvictionRunsMillis(Long.valueOf(env.getRequiredProperty("db.timeBetweenEvictionRunsMillis")));
-//        dataSource.setMinEvictableIdleTimeMillis(Long.valueOf(env.getRequiredProperty("db.minEvictableIdleTimeMillis")));
-//        dataSource.setTestOnBorrow(Boolean.valueOf(env.getRequiredProperty("db.testOnBorrow")));
-//        dataSource.setValidationQuery(env.getRequiredProperty("db.validationQuery"));
+
+        dataSource.setInitialSize(Integer.valueOf(env.getRequiredProperty("db.initialSize")));
+        dataSource.setMinIdle(Integer.valueOf(env.getRequiredProperty("db.minIdle")));
+        dataSource.setMaxIdle(Integer.valueOf(env.getRequiredProperty("db.maxIdle")));
+        dataSource.setTimeBetweenEvictionRunsMillis(Long.valueOf(env.getRequiredProperty("db.timeBetweenEvictionRunsMillis")));
+        dataSource.setMinEvictableIdleTimeMillis(Long.valueOf(env.getRequiredProperty("db.minEvictableIdleTimeMillis")));
+        dataSource.setTestOnBorrow(Boolean.valueOf(env.getRequiredProperty("db.testOnBorrow")));
+        dataSource.setValidationQuery(env.getRequiredProperty("db.validationQuery"));
         return dataSource;
     }
 

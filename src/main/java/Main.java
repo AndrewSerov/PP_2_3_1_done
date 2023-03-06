@@ -8,16 +8,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import web.Entity.User;
 import web.Service.UserService;
 
-import javax.persistence.metamodel.EntityType;
-
-import java.util.Map;
-
 public class Main {
 
     public static void main(String[] args) {
 
-        UserService userService = new UserService();
-
+UserService userService = new UserService();
         User user = new User("test", "test");
 
         userService.add(user);

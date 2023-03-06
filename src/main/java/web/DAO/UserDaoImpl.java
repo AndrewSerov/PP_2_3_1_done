@@ -9,16 +9,24 @@ import web.Entity.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
-@Component
-@Transactional
+@Repository
 public class UserDaoImpl implements UserDao {
 
 
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Override
+    @Transactional
     public void add(User user) {
         entityManager.persist(user);
+    }
+
+    @Override
+    @Transactional
+    public List<User> getAllPeople() {
+        return entityManager.createQuery("from User", User.class).getResultList();
     }
 }

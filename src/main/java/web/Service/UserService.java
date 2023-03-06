@@ -9,6 +9,7 @@ import web.Entity.User;
 
 @Service
 @Transactional
+
 public class UserService {
 
     @Autowired
